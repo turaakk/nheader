@@ -50,10 +50,12 @@ export default function Home() {
   const textAreaIsFocused = ({ index }: { index: number }) => {
     setActiveInputIndex(index)
 
-    const textArea: HTMLTextAreaElement | null = document.querySelector(`#textArea${index}`)
+    const textArea: HTMLTextAreaElement | null = document.querySelector(`#textArea${index}`)!
 
-    window.HTMLElement.prototype.scrollIntoView = function() {}
-    textArea!.scrollIntoView({
+    // window.HTMLElement.prototype.scrollIntoView = function() {}
+    // Test doesn't pass if the above line is uncommented so you have to choose
+    // between the functionality and the test.
+    textArea.scrollIntoView({
       behavior: "smooth",
       inline: "start",
       block: "center"
